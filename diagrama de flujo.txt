@@ -1,0 +1,66 @@
+Algoritmo SistemaVentasBodega
+ 
+    Definir opcion, codigo, cantidad, stock Como Entero
+    Definir precio, subtotal, descuento, total Como Real
+    Definir nombre Como Cadena
+ 
+    stock <- 50   // stock inicial
+ 
+    Repetir
+        Escribir "===== MENU ====="
+        Escribir "1. Registrar venta"
+        Escribir "2. Ver stock"
+        Escribir "3. Salir"
+        Leer opcion
+  
+        Si opcion = 1 Entonces
+            Escribir "Ingrese codigo del producto:"
+            Leer codigo
+   
+            Escribir "Ingrese nombre del producto:"
+            Leer nombre
+   
+            Escribir "Ingrese precio del producto:"
+            Leer precio
+   
+            Escribir "Ingrese cantidad:"
+            Leer cantidad
+   
+            Si cantidad <= stock Entonces
+    
+                subtotal <- precio * cantidad
+    
+                Si subtotal > 100 Entonces
+                    descuento <- subtotal * 0.15
+                SiNo
+                    descuento <- 0
+                FinSi
+    
+                total <- subtotal - descuento
+    
+                stock <- stock - cantidad
+    
+                Escribir "----- TICKET -----"
+                Escribir "Producto: ", nombre
+                Escribir "Cantidad: ", cantidad
+                Escribir "Subtotal: ", subtotal
+                Escribir "Descuento: ", descuento
+                Escribir "Total a pagar: ", total
+    
+                Si stock < 10 Entonces
+                    Escribir "ALERTA: Stock bajo"
+                FinSi
+    
+            SiNo
+                Escribir "ERROR: Stock insuficiente"
+            FinSi
+   
+        Sino
+            Si opcion = 2 Entonces
+                Escribir "Stock actual: ", stock
+            FinSi
+        FinSi
+  
+    Hasta Que opcion = 3
+ 
+FinAlgoritmo
